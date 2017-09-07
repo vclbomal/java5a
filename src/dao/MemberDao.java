@@ -26,5 +26,10 @@ public class MemberDao {
 		String query = " FROM Member";
 		return em.createQuery(query).getResultList();
 	}
+	
+	public void delete(Member u) {
+		String queryDelete = " FROM Member WHERE id ="+ u.getId();
+		em.createQuery(queryDelete);
+	}
 
 }

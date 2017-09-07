@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class IndexServlet extends HttpServlet {
 	
 	@Override
 	public void init() throws ServletException {
+		getServletContext().setAttribute("memberCount", 0);
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -50,6 +52,13 @@ public class IndexServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+	}
+	
+	private void decrementMemberCount(Member u) {
+		//memberDao.delete(u);
+		
+		Integer memberCount = (Integer) getServletContext().getAttribute("memberCount");
+		getServletContext().setAttribute("memberCount", memberCount - 1);
 	}
 	
 	

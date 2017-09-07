@@ -164,6 +164,11 @@
            											 <td>${member.birth}</td>
            											 <td  class="text-right">
                                                        <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Edit</a>
+                                                       <h:form>
+												          <h:commandButton class="btn btn-sm btn-danger" value = "Click Me!" onclick = "decrementMemberCount(member);"> 
+												          <i class="fa fa-trash"></i> Remove
+												          </h:commandButton>
+												       </h:form>
                                                        <a href="delete" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Remove</a>
                                                    </td>
      										    </tr>
