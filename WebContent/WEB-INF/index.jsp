@@ -1,3 +1,8 @@
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,10 +15,10 @@
     <title>Mood of the month</title>
 
     <!-- Bootstrap CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -32,7 +37,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Mood of the month</a>
+                <a class="navbar-brand" href="index">Mood of the month</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -42,9 +47,9 @@
                         <i class="fa fa-gear fa-fw"></i> Manage MOTMs <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="add_member.html"><i class="fa fa-user fa-fw"></i> Add member</a>
+                        <li><a href="add_member"><i class="fa fa-user fa-fw"></i> Add member</a>
                         </li>
-                        <li><a href="edit_motm.html"><i class="fa fa-calendar fa-fw"></i> Change MOTM Template</a>
+                        <li><a href="edit_motm"><i class="fa fa-calendar fa-fw"></i> Change MOTM Template</a>
                         </li>
                     </ul>
                 </li>
@@ -68,12 +73,14 @@
                                     <i class="fa fa-user fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">46</div>
+                                    <div class="huge">
+                                    ${memberCount}
+                                    </div>
                                     <div class="huge-label">Registered members</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="add_member.html">
+                        <a href="add_member">
                             <div class="panel-footer">
                                 <span class="pull-left">Add member</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -95,7 +102,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="edit_motm.html">
+                        <a href="edit_motm">
                             <div class="panel-footer">
                                 <span class="pull-left">Edit MOTM content</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -117,7 +124,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="dashboard.html">
+                        <a href="dashboard">
                             <div class="panel-footer">
                                 <span class="pull-left">Show dashboard</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -150,96 +157,17 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                               <tr>
-                                                   <td>Loïc Ortola</td>
-                                                   <td>lortola@e-biz.fr</td>
-                                                   <td>10/02/1988</td>
-                                                   <td  class="text-right">
+                                            <c:forEach var="member" items="${member}">
+        										<tr>
+           											 </br><td>${member.name}</td>
+           											 <td>${member.mail}</td>
+           											 <td>${member.birth}</td>
+           											 <td  class="text-right">
                                                        <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Edit</a>
-                                                       <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Remove</a>
+                                                       <a href="delete" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Remove</a>
                                                    </td>
-                                               </tr>
-                                               <tr>
-                                                   <td>Antoine Lebel</td>
-                                                   <td>alebel@e-biz.fr</td>
-                                                   <td>11/07/1991</td>
-                                                   <td class="text-right">
-                                                       <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Edit</a>
-                                                       <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Remove</a>
-                                                   </td>
-                                               </tr>
-                                               <tr>
-                                                   <td>Kévin Bottero</td>
-                                                   <td>kbottero@e-biz.fr</td>
-                                                   <td>20/12/1978</td>
-                                                   <td class="text-right">
-                                                       <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Edit</a>
-                                                       <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Remove</a>
-                                                   </td>
-                                               </tr>
-                                               <tr>
-                                                   <td>Romain Larroque</td>
-                                                   <td>rlarroque@e-biz.fr</td>
-                                                   <td>18/03/1992</td>
-                                                   <td class="text-right">
-                                                       <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Edit</a>
-                                                       <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Remove</a>
-                                                   </td>
-                                               </tr>
-                                               <tr>
-                                                   <td>Hubert B. Delabatte</td>
-                                                   <td>hdelabatte@e-biz.fr</td>
-                                                   <td>10/02/1916</td>
-                                                   <td class="text-right">
-                                                       <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Edit</a>
-                                                       <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Remove</a>
-                                                   </td>
-                                               </tr>
-                                               <tr>
-                                                   <td>Guillaume Nostrenoff</td>
-                                                   <td>gnostrenoff@e-biz.fr</td>
-                                                   <td>04/10/1991</td>
-                                                   <td class="text-right">
-                                                       <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Edit</a>
-                                                       <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Remove</a>
-                                                   </td>
-                                               </tr>
-                                               <tr>
-                                                   <td>Hugo Bernardi</td>
-                                                   <td>hbernardi@e-biz.fr</td>
-                                                   <td>13/04/1992</td>
-                                                   <td class="text-right">
-                                                       <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Edit</a>
-                                                       <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Remove</a>
-                                                   </td>
-                                               </tr>
-                                               <tr>
-                                                   <td>Olivier Duvoid</td>
-                                                   <td>oduvoid@e-biz.fr</td>
-                                                   <td>13/04/1992</td>
-                                                   <td class="text-right">
-                                                       <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Edit</a>
-                                                       <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Remove</a>
-                                                   </td>
-                                               </tr>
-                                               <tr>
-                                                   <td>FP Chalopin</td>
-                                                   <td>fpchalopin@e-biz.fr</td>
-                                                   <td>13/04/1992</td>
-                                                   <td class="text-right">
-                                                       <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Edit</a>
-                                                       <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Remove</a>
-                                                   </td>
-                                               </tr>
-                                               <tr>
-                                                   <td>Jones Magloire</td>
-                                                   <td>jmagloire@e-biz.fr</td>
-                                                   <td>13/04/1992</td>
-                                                   <td class="text-right">
-                                                       <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Edit</a>
-                                                       <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Remove</a>
-                                                   </td>
-                                               </tr>
+     										    </tr>
+  										    </c:forEach>
                                             </tbody>
                                         </table>
                                         <div class="text-center">
@@ -275,7 +203,7 @@
                             <div class="details">
                                 <div class="mood">
                                     <div class="img-container">
-                                        <img src="../img/1.png" alt="super"/>
+                                        <img src="img/1.png" alt="super"/>
                                     </div>
                                     <div class="progress-bar-container">
                                         <span class="desc">Vote count: 10</span>
@@ -289,7 +217,7 @@
                                 </div>
                                 <div class="mood">
                                     <div class="img-container">
-                                        <img src="../img/2.png" alt="super"/>
+                                        <img src="img/2.png" alt="super"/>
                                     </div>
                                     <div class="progress-bar-container">
                                         <span class="desc">Vote count: 5</span>
@@ -303,7 +231,7 @@
                                 </div>
                                 <div class="mood">
                                     <div class="img-container">
-                                        <img src="../img/3.png" alt="super"/>
+                                        <img src="img/3.png" alt="super"/>
                                     </div>
                                     <div class="progress-bar-container">
                                         <span class="desc">Vote count: 15</span>
@@ -317,7 +245,7 @@
                                 </div>
                                 <div class="mood">
                                     <div class="img-container">
-                                        <img src="../img/4.png" alt="super"/>
+                                        <img src="img/4.png" alt="super"/>
                                     </div>
                                     <div class="progress-bar-container">
                                         <span class="desc">Vote count: 45</span>
@@ -331,7 +259,7 @@
                                 </div>
                                 <div class="mood">
                                     <div class="img-container">
-                                        <img src="../img/5.png" alt="super"/>
+                                        <img src="img/5.png" alt="super"/>
                                     </div>
                                     <div class="progress-bar-container">
                                         <span class="desc">Vote count: 25</span>
@@ -345,7 +273,7 @@
                                 </div>
                             </div>
 
-                            <a href="stats.html" class="btn btn-default btn-block">View more reports</a>
+                            <a href="stats" class="btn btn-default btn-block">View more reports</a>
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -414,13 +342,13 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
 
     <!-- togggle.js -->
-    <script src="../js/toggle.js"></script>
+    <script src="js/toggle.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
 </body>
 

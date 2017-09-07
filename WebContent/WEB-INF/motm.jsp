@@ -10,10 +10,10 @@
     <title>Mood of the month</title>
 
     <!-- Bootstrap CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -32,7 +32,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Mood of the month</a>
+                <a class="navbar-brand" href="index">Mood of the month</a>
             </div>
             <!-- /.navbar-header -->
         </nav>
@@ -59,23 +59,23 @@
                                             <div class="notation">
                                                 <label for="n1">
                                                     <input id="n1" name="note" type="radio" value="1"/>
-                                                    <img src="../img/1.png" alt="Sad" width="100" height="100"/>
+                                                    <img src="img/1.png" alt="Sad" width="100" height="100"/>
                                                 </label>
                                                 <label for="n2">
                                                     <input id="n2" name="note" type="radio" value="2"/>
-                                                    <img src="../img/2.png" alt="Not Happy" width="100" height="100"/>
+                                                    <img src="img/2.png" alt="Not Happy" width="100" height="100"/>
                                                 </label>
                                                 <label for="n3">
                                                     <input id="n3" name="note" type="radio" value="3"/>
-                                                    <img src="../img/3.png" alt="Average" width="100" height="100"/>
+                                                    <img src="img/3.png" alt="Average" width="100" height="100"/>
                                                 </label>
                                                 <label for="n4">
                                                     <input id="n4" name="note" type="radio" value="4"/>
-                                                    <img src="../img/4.png" alt="Happy" width="100" height="100"/>
+                                                    <img src="img/4.png" alt="Happy" width="100" height="100"/>
                                                 </label>
                                                 <label for="n5">
                                                     <input id="n5" name="note" type="radio" value="5"/>
-                                                    <img src="../img/5.png" alt="Super Happy" width="100" height="100"/>
+                                                    <img src="img/5.png" alt="Super Happy" width="100" height="100"/>
                                                 </label>
                                             </div>
                                         </div>
@@ -120,10 +120,10 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
     <!-- CKEditor -->
     <script src="https://cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script>
