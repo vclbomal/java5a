@@ -39,8 +39,8 @@ public class Add_memberServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Member u = parseUser(req);
 		req.getSession().setAttribute("member", u);
-		incrementMemberCount();
 		memberDao.save(u);
+		incrementMemberCount();
 		resp.sendRedirect("index");
 		
 	}
@@ -54,7 +54,9 @@ public class Add_memberServlet extends HttpServlet {
 	
 	private void incrementMemberCount() {
 		Integer memberCount = (Integer) getServletContext().getAttribute("memberCount");
-		getServletContext().setAttribute("memberCount", memberCount + 1);
+		//getServletContext().setAttribute("memberCount", memberCount + 1);
+		getServletContext().setAttribute("memberCount", memberDao.count());
+
 	}
 	
 }

@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.MemberDao;
+import dao.MoodDao;
 import model.Member;
+import model.Mood;
 
 @WebServlet("/motm")
 public class MotmServlet extends HttpServlet {
@@ -21,7 +23,7 @@ public class MotmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private MemberDao memberDao;
+	private MoodDao moodDao;
 	
 	public MotmServlet() {
 	}
@@ -32,16 +34,21 @@ public class MotmServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Member u = parseMember(req);
+		Mood u = parseMood(req);
 		req.getSession().setAttribute("user", u);
-		memberDao.save(u);
+		moodDao.save(u);
 		resp.sendRedirect("dashboard");
 	}
 	
-	private Member parseMember(HttpServletRequest req) {
-		String name = req.getParameter("name");
-		String mail = req.getParameter("mail");
-		String birth = req.getParameter("birth");
-		return new Member(name, mail, birth);
+	private Mood parseMood(HttpServletRequest req) {
+		String moodresp = req.getParameter("moodresp");
+		String commentresp = req.getParameter("commentresp");
+		String monthresp = req.getParameter("monthresp");
+		String yearresp = req.getParameter("yearresp");
+		String publicresp = req.getParameter("publicresp");
+		int mood = Integer.parseInt(moodresp);
+		int year=Integer.parseInt(yearresp);
+		boolean pub= Boolean.parseBoolean(publicresp);
+		return new Mood(mood, monthresp,year,commentresp,pub);
 	}
 }

@@ -7,34 +7,35 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import model.Member;
+import model.Mood;
 
 @Singleton
-public class MemberDao {
+public class MoodDao {
 	
 	@PersistenceContext
 	private EntityManager em;
 	
-	public void save(Member u) {
+	public void save(Mood u) {
 		em.persist(u);
 	}
 	
-	public Member findOne(Long id) {
-		return em.find(Member.class, id);
+	public Mood findOne(Long id) {
+		return em.find(Mood.class, id);
 	}
 	
-	public List<Member> findAll() {
-		String query = " FROM Member";
+	public List<Mood> findAll() {
+		String query = " FROM Mood";
 		return em.createQuery(query).getResultList();
 	}
 	
 	public void delete() {
-		String queryDelete = " FROM Member WHERE id = 1";//+ u.getId();
+		String queryDelete = " FROM Mood WHERE id = 1";//+ u.getId();
 		em.createQuery(queryDelete);
 	}
 	
 	public int count() {
-		String queryCount = "SELECT COUNT(*) FROM Member";
-		return (int)em.createQuery(queryCount).getSingleResult();
+		String queryCount = "SELECT COUNT(*) FROM Mood ";
+		return em.createQuery(queryCount).getFirstResult();
 	}
 
 }
