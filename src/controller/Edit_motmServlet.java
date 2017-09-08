@@ -1,9 +1,8 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -12,8 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.MemberDao;
-import model.Member;
+
+import dao.MotmDao;
+import model.Motm;
 
 @WebServlet("/edit_motm")
 public class Edit_motmServlet extends HttpServlet {
@@ -21,14 +21,14 @@ public class Edit_motmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private MemberDao userDao;
+	private MotmDao motmDao;
 	
 	public Edit_motmServlet() {
+		
 	}
-	
 	@Override
 	public void init() throws ServletException {
-		getServletContext().setAttribute("liveUserCount", 0);
+
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,22 +37,30 @@ public class Edit_motmServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Member u = parseUser(req);
-		req.getSession().setAttribute("user", u);
-		incrementLiveUserCount();
-		userDao.save(u);
-		resp.sendRedirect("dashboard");
+		Motm motm = parseMotm(req);
+		req.getSession().setAttribute("formulaire", motm);
+		incrementMotmCount();
+		motmDao.save(motm);
+		resp.sendRedirect("index");
 	}
 	
-	private Member parseUser(HttpServletRequest req) {
-		String name = req.getParameter("name");
-		String mail = req.getParameter("mail");
-		String birth = req.getParameter("birth");
-		return new Member(name, mail, birth);
+	private Motm parseMotm(HttpServletRequest req) {
+		String emailSubject = req.getParameter("name");
+		String emailTemplate = req.getParameter("email-template");
+		String formTemplate = req.getParameter("motm-template");
+		return new Motm(emailSubject,emailTemplate,formTemplate);
+		
 	}
 	
-	private void incrementLiveUserCount() {
-		Integer liveUserCount = (Integer) getServletContext().getAttribute("liveUserCount");
-		getServletContext().setAttribute("liveUserCount", liveUserCount + 1);
+
+	private void incrementMotmCount() {
+		LocalDate aujourdhui = LocalDate.now();
+		LocalDate premJourMois = aujourdhui.with(TemporalAdjusters.firstDayOfNextMonth());
+		int comparison = aujourdhui.compareTo(premJourMois);
+		if (comparison == 0) {
+			Integer motmCount = (Integer) getServletContext().getAttribute("motmCount");
+			getServletContext().setAttribute("motmCount", motmCount + 1);
+		}
 	}
 }
+
