@@ -1,3 +1,8 @@
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,10 +63,9 @@
                                                 <i class="fa fa-gear fa-fw"></i> Select month <i class="fa fa-caret-down"></i>
                                             </a>
                                             <ul class="dropdown-menu dropdown-user">
-                                                <li><a href="#">March 2017</a></li>
-                                                <li><a href="#">February 2017</a></li>
-                                                <li><a href="#">January 2017</a></li>
-                                                <li><a href="#">December 2016</a></li>
+                                                <c:forEach var="moodStat" begin="0" end="9" items="${moodStat}" >
+									            <li><a href="java5a/stats?month=${moodStat[0]}&year=${moodStat[1]}" id="choix" >${moodStat[0]} ${moodStat[1]} </a></li>
+									            </c:forEach>									            
                                             </ul>
                                         </div>
                                         <div class="clearfix"></div>
@@ -70,7 +74,7 @@
                                     <div class="container-fluid" id="dashboard">
                                         <div class="half">
                                             <div class="month">
-                                                <p class="title">MARCH 2017</p>
+                                                <p class="title">${monthget} ${yearget}</p>
                                                 <p class="subtitle">MOOD OF THE MONTH</p>
                                             </div>
 
@@ -80,11 +84,11 @@
                                                         <img src="img/1.png" alt="super"/>
                                                     </div>
                                                     <div class="progress-bar-container">
-                                                        <span class="desc">Vote count: 10</span>
+                                                        <span class="desc">Vote count: ${mood1CountStat}</span>
                                                         <div class="progress">
-                                                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="10"
-                                                                 aria-valuemin="0" aria-valuemax="100" style="width:10%">
-                                                                <span class="">10%</span>
+                                                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="${mood1PourcStat}"
+                                                                 aria-valuemin="0" aria-valuemax="100" style="width:${mood1PourcStat}%">
+                                                                <span class="">${mood1PourcStat}%</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -94,11 +98,11 @@
                                                         <img src="img/2.png" alt="super"/>
                                                     </div>
                                                     <div class="progress-bar-container">
-                                                        <span class="desc">Vote count: 5</span>
+                                                        <span class="desc">Vote count:${mood2CountStat}</span>
                                                         <div class="progress">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="5"
-                                                                 aria-valuemin="0" aria-valuemax="100" style="width:5%">
-                                                                <span class="">5%</span>
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="${mood2PourcStat}"
+                                                                 aria-valuemin="0" aria-valuemax="100" style="width:${mood2PourcStat}%">
+                                                                <span class="">${mood2PourcStat}%</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -108,11 +112,11 @@
                                                         <img src="img/3.png" alt="super"/>
                                                     </div>
                                                     <div class="progress-bar-container">
-                                                        <span class="desc">Vote count: 15</span>
+                                                        <span class="desc">Vote count: ${mood3CountStat}</span>
                                                         <div class="progress">
-                                                            <div class="progress-bar progress-bar-neutral" role="progressbar" aria-valuenow="15"
-                                                                 aria-valuemin="0" aria-valuemax="100" style="width:15%">
-                                                                <span class="">15%</span>
+                                                            <div class="progress-bar progress-bar-neutral" role="progressbar" aria-valuenow="${mood3PourcStat}"
+                                                                 aria-valuemin="0" aria-valuemax="100" style="width:${mood3PourcStat}%">
+                                                                <span class="">${mood3PourcStat}%</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -122,11 +126,11 @@
                                                         <img src="img/4.png" alt="super"/>
                                                     </div>
                                                     <div class="progress-bar-container">
-                                                        <span class="desc">Vote count: 45</span>
+                                                        <span class="desc">Vote count: ${mood4CountStat}</span>
                                                         <div class="progress">
-                                                            <div class="progress-bar progress-bar-midsuccess" role="progressbar" aria-valuenow="45"
-                                                                 aria-valuemin="0" aria-valuemax="100" style="width:45%">
-                                                                <span class="">45%</span>
+                                                            <div class="progress-bar progress-bar-midsuccess" role="progressbar" aria-valuenow="${mood4PourcStat}"
+                                                                 aria-valuemin="0" aria-valuemax="100" style="width:${mood4PourcStat}%">
+                                                                <span class="">${mood4PourcStat}%</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -136,11 +140,11 @@
                                                         <img src="img/5.png" alt="super"/>
                                                     </div>
                                                     <div class="progress-bar-container">
-                                                        <span class="desc">Vote count: 25</span>
+                                                        <span class="desc">Vote count: ${mood5CountStat}</span>
                                                         <div class="progress">
-                                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="25"
-                                                                 aria-valuemin="0" aria-valuemax="100" style="width:25%">
-                                                                <span class="">25%</span>
+                                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="${mood5PourcStat}"
+                                                                 aria-valuemin="0" aria-valuemax="100" style="width:${mood5PourcStat}%">
+                                                                <span class="">${mood5PourcStat}%</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -163,42 +167,16 @@
 
                                             <div class="comments">
                                                 <h2 class="title">Comments</h2>
-                                                <div class="comment-container">
-                                                    <div class="note">
-                                                        <img class="mood" src="img/3.png" alt=""/>
-                                                    </div>
-                                                    <div class="comment">
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec nulla quam. Integer nisi ligula,
-                                                        molestie id diam ac, sagittis efficitur justo. Etiam aliquam aliquam dolor sed fringilla. Nullam at.
-                                                    </div>
-                                                </div>
-                                                <div class="comment-container">
-                                                    <div class="note">
-                                                        <img class="mood" src="img/4.png" alt=""/>
-                                                    </div>
-                                                    <div class="comment">
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec nulla quam. Integer nisi ligula,
-                                                        molestie id diam ac, sagittis efficitur justo. Etiam aliquam aliquam dolor sed fringilla. Nullam at.
-                                                    </div>
-                                                </div>
-                                                <div class="comment-container">
-                                                    <div class="note">
-                                                        <img class="mood" src="img/3.png" alt=""/>
-                                                    </div>
-                                                    <div class="comment">
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec nulla quam. Integer nisi ligula,
-                                                        molestie id diam ac, sagittis efficitur justo. Etiam aliquam aliquam dolor sed fringilla. Nullam at.
-                                                    </div>
-                                                </div>
-                                                <div class="comment-container">
-                                                    <div class="note">
-                                                        <img class="mood" src="img/5.png" alt=""/>
-                                                    </div>
-                                                    <div class="comment">
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec nulla quam. Integer nisi ligula,
-                                                        molestie id diam ac, sagittis efficitur justo. Etiam aliquam aliquam dolor sed fringilla. Nullam at.
-                                                    </div>
-                                                </div>
+                                                <c:forEach var="mood" begin="0" end="4" items="${mood}" >
+									            <div class="comment-container">
+									                <div class="note">
+									                    <img class="mood" src="img/${mood.mood}.png" alt=""/>
+									                </div>
+													    <div class="comment">
+													    ${mood.comment} 
+										                </div>
+									            </div>
+									            </c:forEach>
                                             </div>
                                         </div>
                                     </div>

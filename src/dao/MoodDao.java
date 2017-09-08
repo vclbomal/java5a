@@ -28,6 +28,12 @@ public class MoodDao {
 		return em.createQuery(query).getResultList();
 	}
 	
+	public List<Mood> moodStat() {
+		String query = " SELECT month,year FROM Mood GROUP BY month,year";
+		return em.createQuery(query).getResultList();
+	}
+	
+	
 	public void delete() {
 		String queryDelete = " FROM Mood WHERE id = 1";//+ u.getId();
 		em.createQuery(queryDelete);
@@ -52,5 +58,14 @@ public class MoodDao {
 		String queryCount = "SELECT COUNT(*) FROM Mood WHERE mood= "+mood+" AND month= '"+ month+"'";
 		return (long)em.createQuery(queryCount).getSingleResult();
 	}
-
+	
+	public long countMoodStat(int mood,String month,int year) {
+		String queryCount = "SELECT COUNT(*) FROM Mood WHERE mood= "+mood+" AND month= '"+ month+"'";
+		return (long)em.createQuery(queryCount).getSingleResult();
+	}
+	
+	public long countMoodStatTot(String month,int year) {
+		String queryCount = "SELECT COUNT(*) FROM Mood WHERE mood= 1 AND month= '"+ month+"'";
+		return (long)em.createQuery(queryCount).getSingleResult();
+	}
 }

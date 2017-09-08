@@ -289,8 +289,12 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <a href="stats" class="btn btn-default btn-block">View more reports</a>
+							<%@ page import="java.time.LocalDate"%>
+							 <%@  page import="java.time.Month"%>
+							   <%   LocalDate date = LocalDate.now();
+                            		Month month = date.getMonth();
+                            		int year= date.getYear();%>
+                            <a href="stats?month=<%=month%>&year=<%=year%>" class="btn btn-default btn-block">View more reports</a>
                         </div>
                         <!-- /.panel-body -->
                     </div>
