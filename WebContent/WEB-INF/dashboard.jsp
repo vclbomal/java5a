@@ -125,13 +125,13 @@
 
         <div class="comments">
             <h2 class="title">Comments</h2>
-            <c:forEach var="mood" begin="0" end="4" items="${mood}" >
+            <c:forEach var="moodComment" begin="0" end="4" items="${moodComment}" >
             <div class="comment-container">
                 <div class="note">
-                    <img class="mood" src="img/${mood.mood}.png" alt=""/>
+                    <img class="mood" src="img/${moodComment.mood}.png" alt=""/>
                 </div>
 				    <div class="comment">
-				    ${mood.comment} 
+				    ${moodComment.comment} 
 	                </div>
             </div>
             </c:forEach>

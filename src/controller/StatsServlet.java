@@ -36,8 +36,23 @@ public class StatsServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("moodStat", getMoods());
-		request.setAttribute("monthget", request.getParameter("month"));
-		request.setAttribute("yearget", request.getParameter("year"));
+		String monthStat=request.getParameter("month");
+		String yearStat=request.getParameter("year");
+		request.setAttribute("monthget", monthStat);
+		request.setAttribute("yearget", yearStat);
+		request.setAttribute("moodCommentStat", getCommentMoods(monthStat,Integer.parseInt(yearStat)));
+		getServletContext().setAttribute("mood1CountStat",calcMoodStat(1,monthStat,Integer.parseInt(yearStat)));
+		getServletContext().setAttribute("mood2CountStat",calcMoodStat(2,monthStat,Integer.parseInt(yearStat)));
+		getServletContext().setAttribute("mood3CountStat",calcMoodStat(3,monthStat,Integer.parseInt(yearStat)));
+		getServletContext().setAttribute("mood4CountStat",calcMoodStat(4,monthStat,Integer.parseInt(yearStat)));
+		getServletContext().setAttribute("mood5CountStat",calcMoodStat(5,monthStat,Integer.parseInt(yearStat)));
+		getServletContext().setAttribute("moodTotCountStat",calcMoodStatTot(monthStat,Integer.parseInt(yearStat)));
+		getServletContext().setAttribute("mood1PourcStat", moodPourcCalcStat(1));
+		getServletContext().setAttribute("mood2PourcStat", moodPourcCalcStat(2));
+		getServletContext().setAttribute("mood3PourcStat", moodPourcCalcStat(3));
+		getServletContext().setAttribute("mood4PourcStat", moodPourcCalcStat(4));
+		getServletContext().setAttribute("mood5PourcStat", moodPourcCalcStat(5));
+		getServletContext().setAttribute("moodAVGStat", moodAvgCalcStat());
 		request.getRequestDispatcher("WEB-INF/stats.jsp").forward(request, response);
 	}
 	
@@ -52,6 +67,11 @@ public class StatsServlet extends HttpServlet {
 		return new ArrayList<Mood>(mood);
 	}
 	
+	private List<Mood> getCommentMoods(String month, int year) {
+		mood = moodDao.moodCommentStat(month,year);
+		return new ArrayList<Mood>(mood);
+	}
+	
 	private long moodPourcCalcStat(int mood) {
 		long result =0;
 		long mood1 =  (long) getServletContext().getAttribute("mood"+mood+"CountStat");
@@ -62,12 +82,12 @@ public class StatsServlet extends HttpServlet {
 		return result;
 	}
 	
-	private long calcMood( int mood, String month, int year) {
+	private long calcMoodStat( int mood, String month, int year) {
 		long result = moodDao.countMoodStat(mood,month,year);
 		return result;
 	}
 	
-	private long calcMoodMonthTot( String month, int year) {
+	private long calcMoodStatTot( String month, int year) {
 		long result = moodDao.countMoodStatTot(month,year);
 		return result;
 	}

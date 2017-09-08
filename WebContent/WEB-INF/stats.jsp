@@ -64,7 +64,7 @@
                                             </a>
                                             <ul class="dropdown-menu dropdown-user">
                                                 <c:forEach var="moodStat" begin="0" end="9" items="${moodStat}" >
-									            <li><a href="java5a/stats?month=${moodStat[0]}&year=${moodStat[1]}" id="choix" >${moodStat[0]} ${moodStat[1]} </a></li>
+									            <li><a href="stats?month=${moodStat[0]}&year=${moodStat[1]}" id="choix" >${moodStat[0]} ${moodStat[1]} </a></li>
 									            </c:forEach>									            
                                             </ul>
                                         </div>
@@ -159,7 +159,7 @@
                                                     </div>
                                                     <div class="notation">
                                                         <p class="title">GLOBAL MOOD</p>
-                                                        <span class="note">4.2</span>
+                                                        <span class="note">${moodAVGStat}</span>
                                                         <span class="note-on">/5</span>
                                                     </div>
                                                 </div>
@@ -167,13 +167,13 @@
 
                                             <div class="comments">
                                                 <h2 class="title">Comments</h2>
-                                                <c:forEach var="mood" begin="0" end="4" items="${mood}" >
+                                                <c:forEach var="moodCommentStat" begin="0" end="4" items="${moodCommentStat}" >
 									            <div class="comment-container">
 									                <div class="note">
-									                    <img class="mood" src="img/${mood.mood}.png" alt=""/>
+									                    <img class="mood" src="img/${moodCommentStat.mood}.png" alt=""/>
 									                </div>
 													    <div class="comment">
-													    ${mood.comment} 
+													    ${moodCommentStat.comment} 
 										                </div>
 									            </div>
 									            </c:forEach>

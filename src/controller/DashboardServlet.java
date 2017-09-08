@@ -23,6 +23,7 @@ public class DashboardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private List<Mood> mood;
+	private List<Mood> moodComment;
 	@Inject
 	private MoodDao moodDao;
 	
@@ -31,7 +32,9 @@ public class DashboardServlet extends HttpServlet {
 		getServletContext().setAttribute("CurrentYear", LocalDate.now().getYear());
 		LocalDate date = LocalDate.now();
 		Month month = date.getMonth();
+		int yearresp = date.getYear();
 		String monthresp = String.valueOf(month);
+		request.setAttribute("moodComment", getCommentMood(monthresp,yearresp));
 		getServletContext().setAttribute("mood1Count",calcMood(1,monthresp));
 		getServletContext().setAttribute("mood2Count",calcMood(2,monthresp));
 		getServletContext().setAttribute("mood3Count",calcMood(3,monthresp));
@@ -51,6 +54,11 @@ public class DashboardServlet extends HttpServlet {
 	private List<Mood> getMood() {
 		mood = moodDao.findAll();
 		return new ArrayList<Mood>(mood);
+	}
+	
+	private List<Mood> getCommentMood(String month,int year) {
+		moodComment = moodDao.moodCommentStat(month, year);
+		return new ArrayList<Mood>(moodComment);
 	}
 	
 	private long moodPourcCalc(int mood) {
