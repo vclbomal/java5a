@@ -146,6 +146,16 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
+                        <c:forEach var="mood" items="${mood}" >
+            <div class="comment-container">
+                <div class="note">
+                    <img class="mood" src="img/${mood.mood}.png" alt=""/>
+                </div>
+				    <div class="comment">
+				    ${mood.comment} 
+	                </div>
+            </div>
+            </c:forEach>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="table-responsive">
@@ -203,7 +213,7 @@
                         <div class="panel-body" id="stats">
 
                             <div class="note">
-                                ${moodAVG}<small>/5</small>
+                                ${moodAVGEver}<small>/5</small>
                                 <p>Avg Mood</p>
                             </div>
 
@@ -213,11 +223,11 @@
                                         <img src="img/1.png" alt="super"/>
                                     </div>
                                     <div class="progress-bar-container">
-                                        <span class="desc">Vote count: ${mood1Count}</span>
+                                        <span class="desc">Vote count: ${mood1CountEver}</span>
                                         <div class="progress">
-                                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="${mood1Pourc}"
-                                                 aria-valuemin="0" aria-valuemax="100" style="width:${mood1Pourc}%">
-                                                <span class="">${mood1Pourc}%</span>
+                                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="${mood1PourcEver}"
+                                                 aria-valuemin="0" aria-valuemax="100" style="width:${mood1PourcEver}%">
+                                                <span class="">${mood1PourcEver}%</span>
                                             </div>
                                         </div>
                                     </div>
@@ -227,11 +237,11 @@
                                         <img src="img/2.png" alt="super"/>
                                     </div>
                                     <div class="progress-bar-container">
-                                        <span class="desc">Vote count: ${mood2Count}</span>
+                                        <span class="desc">Vote count: ${mood2CountEver}</span>
                                         <div class="progress">
-                                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="${mood2Pourc}"
-                                                 aria-valuemin="0" aria-valuemax="100" style="width:${mood2Pourc}%">
-                                                <span class="">${mood2Pourc}%</span>
+                                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="${mood2PourcEver}"
+                                                 aria-valuemin="0" aria-valuemax="100" style="width:${mood2PourcEver}%">
+                                                <span class="">${mood2PourcEver}%</span>
                                             </div>
                                         </div>
                                     </div>
@@ -241,11 +251,11 @@
                                         <img src="img/3.png" alt="super"/>
                                     </div>
                                     <div class="progress-bar-container">
-                                        <span class="desc">Vote count: ${mood3Count}</span>
+                                        <span class="desc">Vote count: ${mood3CountEver}</span>
                                         <div class="progress">
-                                            <div class="progress-bar progress-bar-neutral" role="progressbar" aria-valuenow="${mood3Pourc}"
-                                                 aria-valuemin="0" aria-valuemax="100" style="width:${mood3Pourc}%">
-                                                <span class="">${mood3Pourc}%</span>
+                                            <div class="progress-bar progress-bar-neutral" role="progressbar" aria-valuenow="${mood3PourcEver}"
+                                                 aria-valuemin="0" aria-valuemax="100" style="width:${mood3PourcEver}%">
+                                                <span class="">${mood3PourcEver}%</span>
                                             </div>
                                         </div>
                                     </div>
@@ -255,11 +265,11 @@
                                         <img src="img/4.png" alt="super"/>
                                     </div>
                                     <div class="progress-bar-container">
-                                        <span class="desc">Vote count: ${mood4Count}</span>
+                                        <span class="desc">Vote count: ${mood4CountEver}</span>
                                         <div class="progress">
-                                            <div class="progress-bar progress-bar-midsuccess" role="progressbar" aria-valuenow="${mood4Pourc}"
-                                                 aria-valuemin="0" aria-valuemax="100" style="width:${mood4Pourc}%">
-                                                <span class="">${mood4Pourc}%</span>
+                                            <div class="progress-bar progress-bar-midsuccess" role="progressbar" aria-valuenow="${mood4PourcEver}"
+                                                 aria-valuemin="0" aria-valuemax="100" style="width:${mood4PourcEver}%">
+                                                <span class="">${mood4PourcEver}%</span>
                                             </div>
                                         </div>
                                     </div>
@@ -269,11 +279,11 @@
                                         <img src="img/5.png" alt="super"/>
                                     </div>
                                     <div class="progress-bar-container">
-                                        <span class="desc">Vote count: ${mood5Count}</span>
+                                        <span class="desc">Vote count: ${mood5CountEver}</span>
                                         <div class="progress">
-                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="${mood5Pourc}"
-                                                 aria-valuemin="0" aria-valuemax="100" style="width:${mood5Pourc}%">
-                                                <span class="">${mood5Pourc}%</span>
+                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="${mood5PourcEver}"
+                                                 aria-valuemin="0" aria-valuemax="100" style="width:${mood5PourcEver}%">
+                                                <span class="">${mood5PourcEver}%</span>
                                             </div>
                                         </div>
                                     </div>

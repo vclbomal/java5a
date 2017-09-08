@@ -86,7 +86,7 @@
                                             <p>
                                               Make this comment public(*)&nbsp;
                                                Yes <input name="publicresp" type="radio" value="true"/>
-                                               No <input name="publicresp" type="radio" value="false"/>
+                                               No <input name="publicresp" type="radio" value="false" checked="checked"/>
                                             </p>
                                         </div>
                                         <div class="text-right">

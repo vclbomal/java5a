@@ -39,7 +39,7 @@ public class MotmServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Mood u = parseMood(req);
 		req.getSession().setAttribute("user", u);
-		moodDao.save(u);
+		moodDao.save(u);		
 		resp.sendRedirect("dashboard");
 	}
 	
@@ -55,4 +55,6 @@ public class MotmServlet extends HttpServlet {
 		boolean pub= Boolean.parseBoolean(publicresp);
 		return new Mood(mood, monthresp,yearresp,commentresp,pub);
 	}
+	
+	
 }

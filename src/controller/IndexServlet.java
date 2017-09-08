@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,16 +15,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.MemberDao;
+import dao.MoodDao;
 import model.Member;
+import model.Mood;
 
 @WebServlet("/index")
 public class IndexServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	private List<Member> member;
-	private List<String> users;
+	
 	@Inject
 	private MemberDao memberDao;
+	@Inject
+	private MoodDao moodDao;
+	
 	
 	public IndexServlet() {
 		
@@ -32,42 +38,33 @@ public class IndexServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		getServletContext().setAttribute("memberCount", 0);
-		getServletContext().setAttribute("motmCount", 0);
-		getServletContext().setAttribute("mood1Count", 10);
-		getServletContext().setAttribute("mood2Count", 5);
-		getServletContext().setAttribute("mood3Count", 20);
-		getServletContext().setAttribute("mood4Count", 10);
-		getServletContext().setAttribute("mood5Count", 5);
-		getServletContext().setAttribute("moodTotCount", 50);
-		getServletContext().setAttribute("mood1Pourc", 0);
-		getServletContext().setAttribute("mood2Pourc", 0);
-		getServletContext().setAttribute("mood3Pourc", 0);
-		getServletContext().setAttribute("mood4Pourc", 0);
-		getServletContext().setAttribute("mood5Pourc", 0);
-		getServletContext().setAttribute("moodAVG", 0);
+		getServletContext().setAttribute("motmCount", (long)0);
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("member", getMembers());
 		request.setAttribute("memberCount", getServletContext().getAttribute("memberCount"));
-		request.setAttribute("mood1Pourc", mood1PourcCalc());
-		request.setAttribute("mood2Pourc", mood2PourcCalc());
-		request.setAttribute("mood3Pourc", mood3PourcCalc());
-		request.setAttribute("mood4Pourc", mood4PourcCalc());
-		request.setAttribute("mood5Pourc", mood5PourcCalc());
-		request.setAttribute("moodAVG", moodAvgCalc());
+		getServletContext().setAttribute("mood1CountEver",calcMoodEver(1));
+		getServletContext().setAttribute("mood2CountEver",calcMoodEver(2));
+		getServletContext().setAttribute("mood3CountEver",calcMoodEver(3));
+		getServletContext().setAttribute("mood4CountEver",calcMoodEver(4));
+		getServletContext().setAttribute("mood5CountEver",calcMoodEver(5));
+		getServletContext().setAttribute("moodTotCountEver",calcMoodEverTot());
+		getServletContext().setAttribute("mood1PourcEver", moodPourcCalc(1));
+		getServletContext().setAttribute("mood2PourcEver", moodPourcCalc(2));
+		getServletContext().setAttribute("mood3PourcEver", moodPourcCalc(3));
+		getServletContext().setAttribute("mood4PourcEver", moodPourcCalc(4));
+		getServletContext().setAttribute("mood5PourcEver", moodPourcCalc(5));
+		getServletContext().setAttribute("moodAVGEver", moodAvgCalcEver());
 		request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
 	}
 	
-	private List<String> getUsers(){
-		return new ArrayList<String>(users);
-	}
-	
+
 	private List<Member> getMembers() {
 		member = memberDao.findAll();
 		return new ArrayList<Member>(member);
 	}
-
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
@@ -80,55 +77,43 @@ public class IndexServlet extends HttpServlet {
 	
 	private void decrementMemberCount() {
 		memberDao.delete();
-		Integer memberCount = (Integer) getServletContext().getAttribute("memberCount");
-		//getServletContext().setAttribute("memberCount", memberCount - 1);
 		getServletContext().setAttribute("memberCount", memberDao.count());
 	}
 	
-	private int mood1PourcCalc() {
-		Integer mood1 = (Integer)getServletContext().getAttribute("mood1Count");
-		Integer moodtot = (Integer)getServletContext().getAttribute("moodTotCount");
-		int result = mood1*100/moodtot;
+	private long calcMoodEver( int mood) {
+		long result = moodDao.countMoodEver(mood);
 		return result;
 	}
 	
-	private int mood2PourcCalc() {
-		Integer mood2 = (Integer)getServletContext().getAttribute("mood2Count");
-		Integer moodtot = (Integer)getServletContext().getAttribute("moodTotCount");
-		int result = mood2*100/moodtot;
+private long calcMoodEverTot() {
+	    long result = moodDao.count();
 		return result;
 	}
 	
-	private int mood3PourcCalc() {
-		Integer mood3 = (Integer)getServletContext().getAttribute("mood3Count");
-		Integer moodtot = (Integer)getServletContext().getAttribute("moodTotCount");
-		int result = mood3*100/moodtot;
+	private long moodPourcCalc(int mood) {
+		long result =0;
+		long mood1 =  (long) getServletContext().getAttribute("mood"+mood+"CountEver");
+		long moodtot = (long)getServletContext().getAttribute("moodTotCountEver");
+		if(moodtot!=0) {
+			result = mood1*100/moodtot;
+		}
 		return result;
 	}
 	
-	private int mood4PourcCalc() {
-		Integer mood4 = (Integer)getServletContext().getAttribute("mood4Count");
-		Integer moodtot = (Integer)getServletContext().getAttribute("moodTotCount");
-		int result = mood4*100/moodtot;
-		return result;
-	}
-	
-	private int mood5PourcCalc() {
-		Integer mood5 = (Integer)getServletContext().getAttribute("mood5Count");
-		Integer moodtot = (Integer)getServletContext().getAttribute("moodTotCount");
-		int result = mood5*100/moodtot;
-		return result;
-	}
-	
-	private double moodAvgCalc() {
-		Integer mood1 = (Integer)getServletContext().getAttribute("mood1Count");
-		Integer mood2 = (Integer)getServletContext().getAttribute("mood2Count");
-		Integer mood3 = (Integer)getServletContext().getAttribute("mood3Count");
-		Integer mood4 = (Integer)getServletContext().getAttribute("mood4Count");
-		Integer mood5 = (Integer)getServletContext().getAttribute("mood5Count");
-		Integer moodtot = (Integer)getServletContext().getAttribute("moodTotCount");
+	private double moodAvgCalcEver() {
+		long mood1 = (long)getServletContext().getAttribute("mood1CountEver");
+		long mood2 = (long)getServletContext().getAttribute("mood2CountEver");
+		long mood3 = (long)getServletContext().getAttribute("mood3CountEver");
+		long mood4 = (long)getServletContext().getAttribute("mood4CountEver");
+		long mood5 = (long)getServletContext().getAttribute("mood5CountEver");
+		long moodtot = (long)getServletContext().getAttribute("moodTotCountEver");
 		double resultIntermediaire = (mood1+2*mood2+3*mood3+4*mood4+5*mood5);
-		double result = resultIntermediaire/moodtot;
+		double result=0;
+		if(moodtot!=0) {
+			result = resultIntermediaire/(double)moodtot;
+			result=(int)(result*100);
+			result=result/100;
+		}
 		return result;
 	}
 	

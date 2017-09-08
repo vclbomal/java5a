@@ -33,9 +33,24 @@ public class MoodDao {
 		em.createQuery(queryDelete);
 	}
 	
-	public int count() {
+	public long count() {
 		String queryCount = "SELECT COUNT(*) FROM Mood ";
-		return em.createQuery(queryCount).getFirstResult();
+		return (long)em.createQuery(queryCount).getSingleResult();
+	}
+	
+	public long countMoodEver(int mood) {
+		String queryCountmood = "SELECT COUNT(*) FROM Mood WHERE mood = "+ mood;
+		return (long)em.createQuery(queryCountmood).getSingleResult();
+	}
+	
+	public long countMoodMonthTot(String month) {
+		String queryCount = "SELECT COUNT(*) FROM Mood WHERE month= '"+ month+"'";
+		return (long)em.createQuery(queryCount).getSingleResult();
+	}
+	
+	public long countMoodMonth(int mood,String month) {
+		String queryCount = "SELECT COUNT(*) FROM Mood WHERE mood= "+mood+" AND month= '"+ month+"'";
+		return (long)em.createQuery(queryCount).getSingleResult();
 	}
 
 }
