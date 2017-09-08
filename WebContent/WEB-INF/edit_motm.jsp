@@ -92,7 +92,7 @@
                                             <input type="text" class="input-lg form-control" name="emailSubject" id="name" value="Hey ${name}, let's hear it for your mood of the month!">
                                         </div>
                                         <div class="form-group">
-                                            <label for="email-template">Email template (<a href="newsletter.template" target="_blank">check the email template</a>)</label>
+                                            <label for="email-template">Email template (<a href="newslettertemplate" target="_blank">check the email template</a>)</label>
                                             <textarea id="email-template" name="emailTemplate" class="content"></textarea>
                                         </div>
                                         <div class="form-group">

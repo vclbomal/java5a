@@ -39,6 +39,7 @@ public class Edit_motmServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Motm motm = parseMotm(req);
 		req.getSession().setAttribute("formulaire", motm);
+		getServletContext().setAttribute("formTemplate", req.getParameter("formTemplate"));
 		incrementMotmCount();
 		motmDao.save(motm);
 		resp.sendRedirect("index");

@@ -2,6 +2,9 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,12 +46,13 @@ public class MotmServlet extends HttpServlet {
 	private Mood parseMood(HttpServletRequest req) {
 		String moodresp = req.getParameter("moodresp");
 		String commentresp = req.getParameter("commentresp");
-		String monthresp = req.getParameter("monthresp");
-		String yearresp = req.getParameter("yearresp");
+		LocalDate date = LocalDate.now();
+		Month month = date.getMonth();
+		String monthresp = String.valueOf(month);
+		int yearresp = date.getYear();
 		String publicresp = req.getParameter("publicresp");
 		int mood = Integer.parseInt(moodresp);
-		int year=Integer.parseInt(yearresp);
 		boolean pub= Boolean.parseBoolean(publicresp);
-		return new Mood(mood, monthresp,year,commentresp,pub);
+		return new Mood(mood, monthresp,yearresp,commentresp,pub);
 	}
 }
