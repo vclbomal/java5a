@@ -45,9 +45,9 @@ public class Edit_motmServlet extends HttpServlet {
 	}
 	
 	private Motm parseMotm(HttpServletRequest req) {
-		String emailSubject = req.getParameter("name");
-		String emailTemplate = req.getParameter("email-template");
-		String formTemplate = req.getParameter("motm-template");
+		String emailSubject = req.getParameter("emailSubject");
+		String emailTemplate = req.getParameter("emailTemplate");
+		String formTemplate = req.getParameter("formTemplate");
 		return new Motm(emailSubject,emailTemplate,formTemplate);
 		
 	}

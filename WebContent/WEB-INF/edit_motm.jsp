@@ -89,15 +89,15 @@
                                     <form action="" method="post" class="">
                                         <div class="form-group">
                                             <label for="name">Subject</label>
-                                            <input type="text" class="input-lg form-control" id="name" value="Hey ${name}, let's hear it for your mood of the month!">
+                                            <input type="text" class="input-lg form-control" name="emailSubject" id="name" value="Hey ${name}, let's hear it for your mood of the month!">
                                         </div>
                                         <div class="form-group">
                                             <label for="email-template">Email template (<a href="newsletter.template" target="_blank">check the email template</a>)</label>
-                                            <textarea id="email-template" class="content"></textarea>
+                                            <textarea id="email-template" name="emailTemplate" class="content"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="motm-template">Vote page template</label>
-                                            <textarea id="motm-template" class="content"></textarea>
+                                            <textarea id="motm-template" name="formTemplate" class="content"></textarea>
                                         </div>
                                         <div class="text-right">
                                             <button type="submit" class="btn btn-lg btn-primary">Save the MOTM</button>

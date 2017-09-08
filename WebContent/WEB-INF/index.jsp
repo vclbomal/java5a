@@ -98,7 +98,7 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">
-                                    ${moodTotCount}
+                                    ${motmCount}
                                     </div>
                                     <div class="huge-label">Moods Closed</div>
                                 </div>

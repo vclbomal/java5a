@@ -32,6 +32,7 @@ public class IndexServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		getServletContext().setAttribute("memberCount", 0);
+		getServletContext().setAttribute("motmCount", 0);
 		getServletContext().setAttribute("mood1Count", 10);
 		getServletContext().setAttribute("mood2Count", 5);
 		getServletContext().setAttribute("mood3Count", 20);
