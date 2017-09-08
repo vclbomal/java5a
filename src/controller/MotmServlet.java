@@ -44,7 +44,7 @@ public class MotmServlet extends HttpServlet {
 	}
 	
 	private Mood parseMood(HttpServletRequest req) {
-		String moodresp = req.getParameter("moodresp");
+		String moodresp = req.getParameter("note");
 		String commentresp = req.getParameter("commentresp");
 		LocalDate date = LocalDate.now();
 		Month month = date.getMonth();

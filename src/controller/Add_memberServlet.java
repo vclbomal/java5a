@@ -53,7 +53,7 @@ public class Add_memberServlet extends HttpServlet {
 	}
 	
 	private void incrementMemberCount() {
-		Integer memberCount = (Integer) getServletContext().getAttribute("memberCount");
+		//Integer memberCount = (Integer) getServletContext().getAttribute("memberCount");
 		//getServletContext().setAttribute("memberCount", memberCount + 1);
 		getServletContext().setAttribute("memberCount", memberDao.count());
 

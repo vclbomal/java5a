@@ -32,9 +32,9 @@ public class MemberDao {
 		em.createQuery(queryDelete);
 	}
 	
-	public int count() {
+	public long count() {
 		String queryCount = "SELECT COUNT(*) FROM Member";
-		return (int)em.createQuery(queryCount).getSingleResult();
+		return (long)em.createQuery(queryCount).getSingleResult();
 	}
 
 }

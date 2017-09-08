@@ -81,11 +81,12 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="content">Comment (optional)</label>
-                                            <textarea id="content" class="content"></textarea>
+                                            <textarea id="content" name="commentresp" class="content"></textarea>
                                             <br/>
                                             <p>
                                               Make this comment public(*)&nbsp;
-                                              <input name="public" type="checkbox"/>
+                                               Yes <input name="publicresp" type="radio" value="true"/>
+                                               No <input name="publicresp" type="radio" value="false"/>
                                             </p>
                                         </div>
                                         <div class="text-right">
