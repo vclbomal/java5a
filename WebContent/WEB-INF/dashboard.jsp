@@ -113,7 +113,10 @@
         <div class="global">
             <div class="global-mood">
               <div class="img-container">
-                <img class="mood" src="img/4.png" alt=""/>
+              <%  double avg = (double)getServletContext().getAttribute("moodAVG");  
+              int avgImg= (int)(avg+0.5);
+              %>
+                <img class="mood" src="img/<%= avgImg%>.png" alt=""/>
               </div>
               <div class="notation">
                   <p class="title">GLOBAL MOOD</p>
