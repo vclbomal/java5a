@@ -39,6 +39,7 @@ public class IndexServlet extends HttpServlet {
 	public void init() throws ServletException {
 		getServletContext().setAttribute("memberCount", 0);
 		getServletContext().setAttribute("motmCount", (long)0);
+		getServletContext().setAttribute("memberCount", memberDao.count());
 	}
 	
 	@Override
@@ -62,9 +63,11 @@ public class IndexServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getParameter("button1") != null) {
-            memberDao.delete(request.getParameter("button1"));
+		if (request.getParameter("buttonRemove") != null) {
+            memberDao.delete(request.getParameter("buttonRemove"));
             }
+		getServletContext().setAttribute("memberCount", memberDao.count());
+		//request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
 		doGet(request, response);
 
 	}	
