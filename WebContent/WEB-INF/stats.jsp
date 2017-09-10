@@ -81,42 +81,14 @@
                                             <div class="details">
                                                 <div class="mood">
                                                     <div class="img-container">
-                                                        <img src="img/1.png" alt="super"/>
+                                                        <img src="img/5.png" alt="super"/>
                                                     </div>
                                                     <div class="progress-bar-container">
-                                                        <span class="desc">Vote count: ${mood1CountStat}</span>
+                                                        <span class="desc">Vote count: ${mood5CountStat}</span>
                                                         <div class="progress">
-                                                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="${mood1PourcStat}"
-                                                                 aria-valuemin="0" aria-valuemax="100" style="width:${mood1PourcStat}%">
-                                                                <span class="">${mood1PourcStat}%</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="mood">
-                                                    <div class="img-container">
-                                                        <img src="img/2.png" alt="super"/>
-                                                    </div>
-                                                    <div class="progress-bar-container">
-                                                        <span class="desc">Vote count:${mood2CountStat}</span>
-                                                        <div class="progress">
-                                                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="${mood2PourcStat}"
-                                                                 aria-valuemin="0" aria-valuemax="100" style="width:${mood2PourcStat}%">
-                                                                <span class="">${mood2PourcStat}%</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="mood">
-                                                    <div class="img-container">
-                                                        <img src="img/3.png" alt="super"/>
-                                                    </div>
-                                                    <div class="progress-bar-container">
-                                                        <span class="desc">Vote count: ${mood3CountStat}</span>
-                                                        <div class="progress">
-                                                            <div class="progress-bar progress-bar-neutral" role="progressbar" aria-valuenow="${mood3PourcStat}"
-                                                                 aria-valuemin="0" aria-valuemax="100" style="width:${mood3PourcStat}%">
-                                                                <span class="">${mood3PourcStat}%</span>
+                                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="${mood5PourcStat}"
+                                                                 aria-valuemin="0" aria-valuemax="100" style="width:${mood5PourcStat}%">
+                                                                <span class="">${mood5PourcStat}%</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -137,14 +109,42 @@
                                                 </div>
                                                 <div class="mood">
                                                     <div class="img-container">
-                                                        <img src="img/5.png" alt="super"/>
+                                                        <img src="img/3.png" alt="super"/>
                                                     </div>
                                                     <div class="progress-bar-container">
-                                                        <span class="desc">Vote count: ${mood5CountStat}</span>
+                                                        <span class="desc">Vote count: ${mood3CountStat}</span>
                                                         <div class="progress">
-                                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="${mood5PourcStat}"
-                                                                 aria-valuemin="0" aria-valuemax="100" style="width:${mood5PourcStat}%">
-                                                                <span class="">${mood5PourcStat}%</span>
+                                                            <div class="progress-bar progress-bar-neutral" role="progressbar" aria-valuenow="${mood3PourcStat}"
+                                                                 aria-valuemin="0" aria-valuemax="100" style="width:${mood3PourcStat}%">
+                                                                <span class="">${mood3PourcStat}%</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mood">
+                                                    <div class="img-container">
+                                                        <img src="img/2.png" alt="super"/>
+                                                    </div>
+                                                    <div class="progress-bar-container">
+                                                        <span class="desc">Vote count:${mood2CountStat}</span>
+                                                        <div class="progress">
+                                                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="${mood2PourcStat}"
+                                                                 aria-valuemin="0" aria-valuemax="100" style="width:${mood2PourcStat}%">
+                                                                <span class="">${mood2PourcStat}%</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mood">
+                                                    <div class="img-container">
+                                                        <img src="img/1.png" alt="super"/>
+                                                    </div>
+                                                    <div class="progress-bar-container">
+                                                        <span class="desc">Vote count: ${mood1CountStat}</span>
+                                                        <div class="progress">
+                                                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="${mood1PourcStat}"
+                                                                 aria-valuemin="0" aria-valuemax="100" style="width:${mood1PourcStat}%">
+                                                                <span class="">${mood1PourcStat}%</span>
                                                             </div>
                                                         </div>
                                                     </div>
