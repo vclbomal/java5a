@@ -65,10 +65,23 @@ public class IndexServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getParameter("buttonRemove") != null) {
             memberDao.delete(request.getParameter("buttonRemove"));
+            getServletContext().setAttribute("memberCount", memberDao.count());
+            getServletContext().setAttribute("buttonRemove",null);
+    		doGet(request, response);
             }
-		getServletContext().setAttribute("memberCount", memberDao.count());
-		//request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
-		doGet(request, response);
+		else if(request.getParameter("buttonEdit") != null){
+			System.out.println(Long.parseLong(request.getParameter("buttonEdit")));
+			getServletContext().setAttribute("idActif",request.getParameter("buttonEdit"));
+			Member memberActif = memberDao.findOne(Long.parseLong(request.getParameter("buttonEdit")));//Long.getLong(request.getParameter("buttonEdit")));
+			String mailActif = memberActif.getMail();
+			String birthActif = memberActif.getBirth();
+			String nameActif = memberActif.getName();
+			getServletContext().setAttribute("mailActif",mailActif);
+			getServletContext().setAttribute("birthActif",birthActif);
+			getServletContext().setAttribute("nameActif",nameActif);
+			response.sendRedirect("add_member");
+		}
+		
 
 	}	
 	
@@ -81,13 +94,6 @@ public class IndexServlet extends HttpServlet {
 		member = memberDao.findAll();
 		return new ArrayList<Member>(member);
 	}
-	
-	
-	
-	/*private void decrementMemberCount() {
-		memberDao.delete();
-		getServletContext().setAttribute("memberCount", memberDao.count());
-	}*/
 	
 	private long calcMoodEver( int mood) {
 		long result = moodDao.countMoodEver(mood);

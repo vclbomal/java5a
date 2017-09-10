@@ -28,9 +28,9 @@ public class Add_memberServlet extends HttpServlet {
 	
 	@Override
 	public void init() throws ServletException {
-		
 	}
 	
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("WEB-INF/add_member.jsp").forward(request, response);
 	}
@@ -39,7 +39,16 @@ public class Add_memberServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Member u = parseUser(req);
 		req.getSession().setAttribute("member", u);
-		memberDao.save(u);
+		if(getServletContext().getAttribute("idActif") != null) {
+			memberDao.update(Long.parseLong((String)getServletContext().getAttribute("idActif")),u.getName(),u.getMail(),u.getBirth());
+			getServletContext().setAttribute("idActif", null);
+			getServletContext().setAttribute("nameActif", null);
+			getServletContext().setAttribute("mailActif", null);
+			getServletContext().setAttribute("birthActif", null);
+		}
+		else {
+			memberDao.save(u);
+		}
 		incrementMemberCount();
 		resp.sendRedirect("index");
 		
@@ -53,8 +62,6 @@ public class Add_memberServlet extends HttpServlet {
 	}
 	
 	private void incrementMemberCount() {
-		//Integer memberCount = (Integer) getServletContext().getAttribute("memberCount");
-		//getServletContext().setAttribute("memberCount", memberCount + 1);
 		getServletContext().setAttribute("memberCount", memberDao.count());
 
 	}

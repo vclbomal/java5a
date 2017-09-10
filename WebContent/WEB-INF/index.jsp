@@ -176,10 +176,8 @@
 	           											 <td>${member.mail}</td>
 	           											 <td>${member.birth}</td>
 	           											 <td  class="text-right">
-	                                                       <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Edit</a>
-	                                                       <button type="submit" name="buttonRemove" value="${member.id}">Button 1</button>
-	                                                       
-	                                                       <a href="index" type="submit" value="button1" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Remove</a>
+	                                                       <button type="submit" name="buttonEdit" value="${member.id}" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i>  Edit</button>
+	                                                   	   <button type="submit" name="buttonRemove" value="${member.id}" class="btn btn-sm btn-danger" ><i class="fa fa-trash"></i> Remove</button>
 	                                                   </td>
 	     										    </tr>
 	     										</form>

@@ -69,15 +69,15 @@
                                     <form action="add_member" method="post" class="">
                                         <div class="form-group">
                                             <label for="name">Name</label>
-                                            <input type="text" class="input-lg form-control" name="name" placeholder="Nom">
+                                            <input type="text" class="input-lg form-control" name="name" value="${nameActif}" placeholder="name">
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="email" class="input-lg form-control" name="email" placeholder="Email Address">
+                                            <input type="email" class="input-lg form-control" name="email" value="${mailActif}" placeholder="email address">
                                         </div>
                                         <div class="form-group">
                                             <label for="date">Birthdate</label>
-                                            <input type="text" class="input-lg form-control" name="date" placeholder="DD/MM/YYYY">
+                                            <input type="text" class="input-lg form-control" name="date" value="${birthActif}" placeholder="birthdate">
                                         </div>
 
                                         <div class="text-right">
