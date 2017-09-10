@@ -66,7 +66,7 @@
                                                     <img src="img/2.png" alt="Not Happy" width="100" height="100"/>
                                                 </label>
                                                 <label for="n3">
-                                                    <input id="n3" name="note" type="radio" value="3"/>
+                                                    <input id="n3" name="note" type="radio" value="3" checked="checked"/>
                                                     <img src="img/3.png" alt="Average" width="100" height="100"/>
                                                 </label>
                                                 <label for="n4">

@@ -41,6 +41,7 @@ public class IndexServlet extends HttpServlet {
 		getServletContext().setAttribute("motmCount", (long)0);
 	}
 	
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("member", getMembers());
 		request.setAttribute("memberCount", getServletContext().getAttribute("memberCount"));
@@ -59,26 +60,31 @@ public class IndexServlet extends HttpServlet {
 		request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
 	}
 	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if (request.getParameter("button1") != null) {
+            memberDao.delete(request.getParameter("button1"));
+            }
+		doGet(request, response);
+
+	}	
+	
+	/*@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+				memberDao.delete();;
+	}*/
 
 	private List<Member> getMembers() {
 		member = memberDao.findAll();
 		return new ArrayList<Member>(member);
 	}
 	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-	}
 	
-	@Override
-	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-				decrementMemberCount();
-	}
 	
-	private void decrementMemberCount() {
+	/*private void decrementMemberCount() {
 		memberDao.delete();
 		getServletContext().setAttribute("memberCount", memberDao.count());
-	}
+	}*/
 	
 	private long calcMoodEver( int mood) {
 		long result = moodDao.countMoodEver(mood);

@@ -170,20 +170,19 @@
                                             </thead>
                                             <tbody>
                                             <c:forEach var="member" items="${member}">
-        										<tr>
-           											 </br><td>${member.name}</td>
-           											 <td>${member.mail}</td>
-           											 <td>${member.birth}</td>
-           											 <td  class="text-right">
-                                                       <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Edit</a>
-                                                       <h:form value="Delete" action="MemberDao" method="post">
-												          <h:commandButton id="delete" class="btn btn-sm btn-danger" value = "Click Me!" onclick = "decrementMemberCount(member);"> 
-												          <i class="fa fa-trash"></i> Remove
-												          </h:commandButton>
-												       </h:form>
-                                                       <a href="delete" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Remove</a>
-                                                   </td>
-     										    </tr>
+	                                            <form action="${pageContext.request.contextPath}/index" method="post">
+	        										<tr>
+	           											 </br><td >${member.name}</td>
+	           											 <td>${member.mail}</td>
+	           											 <td>${member.birth}</td>
+	           											 <td  class="text-right">
+	                                                       <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Edit</a>
+	                                                       <button type="submit" name="button1" value="${member.mail}">Button 1</button>
+	                                                       
+	                                                       <a href="index" type="submit" value="button1" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Remove</a>
+	                                                   </td>
+	     										    </tr>
+	     										</form>
   										    </c:forEach>
                                             </tbody>
                                         </table>

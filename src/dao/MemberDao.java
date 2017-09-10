@@ -27,9 +27,13 @@ public class MemberDao {
 		return em.createQuery(query).getResultList();
 	}
 	
-	public void delete() {
-		String queryDelete = " FROM Member WHERE id = 1";//+ u.getId();
-		em.createQuery(queryDelete);
+	public void delete(String mail) {
+		String queryDelete = " DELETE FROM Member WHERE mail = '"+mail+"'";//+ u.getId();
+		int result= em.createQuery(queryDelete).executeUpdate();
+		/*Member member = em.find(Member.class, 1);
+		em.getTransaction().begin();
+		em.remove(member);
+		em.getTransaction().commit();*/
 	}
 	
 	public long count() {
